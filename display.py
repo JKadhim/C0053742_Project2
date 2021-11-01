@@ -21,20 +21,41 @@ class Display:
         return (name, address, phone, age)
 
     def __AddContact(self):
+        name, address, phone, age = self.__GetInfo()
+        contact = self.contacts.ContactsAdd(name, address, phone, age)
 
-
+    def __parse(self, choice):
+        if choice.lower() == "list":
+            self.contacts.ContactsList()
+            return True
+        if choice.lower() == "add":
+            self.__AddContact()
+            return True
+        if choice.lower() == "remove":
+            self.contacts.ContactsRemove()
+            return True
+        if choice.lower() == "edit":
+            self.contacts.ContactsEdit()
+            return True
+        if choice.lower() == "search":
+            self.contacts.ContactsSearch()
+            return True
+        if choice.lower() == "close":
+            self.contacts.ContactsClose()
+            return True
 
     def run(self):
         start = True
         intro = ("--Address-Book--\n"
                  "        ----------------")
-        menu = """What would you like to do:
-        >Add      | Adds a contact
-        >List     | Lists all contacts
-        >Remove   | Removes a contact
-        >Edit     | Edits a contact
-        >Search   | Searches for a specific contact
-        >Close    | Ends the program"""
+        menu = ("What would you like to do:\n"
+                ">Add      | Adds a contact\n"
+                ">List     | Lists all contacts\n"
+                ">Remove   | Removes a contact\n"
+                ">Edit     | Edits a contact\n"
+                ">Search   | Searches for a specific contact\n"
+                ">Close    | Ends the program\n"
+                ">>")
         print (intro)
         while start:
             print (menu)
