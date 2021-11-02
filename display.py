@@ -1,54 +1,55 @@
 import contacts
 
+
 class Display:
 
     def __init__(self):
         self.contacts = contacts.Contacts()
 
     def __GetInfo(self):
-        print ("please give me the name of the contact:\n"
-               ">>")
+        print("please give me the name of the contact:\n"
+              ">>")
         name = input()
-        print ("Please give me the address of the contact:\n"
-               ">>")
+        print("Please give me the address of the contact:\n"
+              ">>")
         address = input()
-        print ("Please give the phone number of the contact:\n"
-               ">>")
+        print("Please give the phone number of the contact:\n"
+              ">>")
         phone = input()
-        print ("please give the date of birth of the contact:\n"
-               ">>")
+        print("please give the date of birth of the contact:\n"
+              ">>")
         age = input()
-        return (name, address, phone, age)
+        return (name, address, phone, age)  # gets all necessary info for the address book
 
     def __AddContact(self):
-        name, address, phone, age = self.__GetInfo()
-        contact = self.contacts.ContactsAdd(name, address, phone, age)
+        name, address, phone, age = self.__GetInfo()  # gets info from the user
+        contact = self.contacts.ContactsAdd(name, address, phone, age)  # adds the info to the txt file
 
     def __RemoveContact(self):
-        name, address, phone, age = self.__GetInfo()
-        if self.contacts.ContactsRemove(name, address, phone, age):
-            print ("--Contact-Deleted--")
+        name, address, phone, age = self.__GetInfo()  # gets info from the user
+        if self.contacts.ContactsRemove(name, address, phone, age):  # checks then removes the contact
+            print("--Contact-Deleted--")
         else:
-            print ("--Failed-To-Delete--")
+            print("--Failed-To-Delete--")
 
     def __parse(self, choice):
-        if choice.lower() == "list":
+        if choice.lower() == "list":  # lists the contacts in the txt file
             self.contacts.ContactsList()
             return True
-        if choice.lower() == "add":
+        if choice.lower() == "add":  # adds a contact to the txt file
             self.__AddContact()
             return True
         if choice.lower() == "remove":
-            self.__RemoveContact()
+            self.__RemoveContact()  # removes a contactfrom the txt file
             return True
-        if choice.lower() == "edit":
+        if choice.lower() == "edit":  # alters a contact in the txt file
             self.contacts.ContactsEdit()
             return True
-        if choice.lower() == "search":
+        if choice.lower() == "search":  # searches for an existing contact
             self.contacts.ContactsSearch()
             return True
         if choice.lower() == "close":
-            self.contacts.ContactsClose()
+            self.contacts.ContactsClose()  # ends the program
             return True
 
     def run(self):
@@ -63,8 +64,8 @@ class Display:
                 ">Search   | Searches for a specific contact\n"
                 ">Close    | Ends the program\n"
                 ">>")
-        print (intro)
+        print(intro)
         while start:
-            print (menu)
+            print(menu)  # prints out the UI
             choice = input()
-            start = self.__parse(choice)
+            start = self.__parse(choice)  # sends choice to __parse
