@@ -24,6 +24,13 @@ class Display:
         name, address, phone, age = self.__GetInfo()
         contact = self.contacts.ContactsAdd(name, address, phone, age)
 
+    def __RemoveContact(self):
+        name, address, phone, age = self.__GetInfo()
+        if self.contacts.ContactsRemove(name, address, phone, age):
+            print ("--Contact-Deleted--")
+        else:
+            print ("--Failed-To-Delete--")
+
     def __parse(self, choice):
         if choice.lower() == "list":
             self.contacts.ContactsList()
@@ -32,7 +39,7 @@ class Display:
             self.__AddContact()
             return True
         if choice.lower() == "remove":
-            self.contacts.ContactsRemove()
+            self.__RemoveContact()
             return True
         if choice.lower() == "edit":
             self.contacts.ContactsEdit()
