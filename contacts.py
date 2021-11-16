@@ -103,4 +103,24 @@ class Contacts:
                     print("--User-Not-Found--")
                     return False  # cancels if the contact doesnt exist
 
-    def ContactsSearch(self, name, address, phone, age):
+    def ContactsSearch(self):
+        f = open("Book.txt", "r")
+        lineCount = 0
+        for line in f:  # counts the number of lines in the txt file
+            if line != "\n":
+                lineCount += 1
+        lineGroup = int(lineCount / 4)  # splits the lines into each contact
+        f.close()
+        print ("""What would you like to search for?:
+                  >Name
+                  >Address
+                  >Number
+                  >Birthday
+                  >>""")
+        searchChoice=input()
+        if searchChoice.lower() == "name":
+            search = input("What name are you searching for?")
+            i = 0
+            for x in range(0, lineGroup):
+
+

@@ -36,11 +36,15 @@ class Display:
         print ("Enter the details of the user you want to edit")
         name, address, phone, age = self.__GetInfo()
         if self.contacts.ContactsEdit(name, address, phone, age):
-            print("--Contact-Edited--")
+            print("--Contact-Edited--")# if the method is succesfull
         else:
-            print("--Failed-To-Edit--")
+            print("--Failed-To-Edit--")# if the method is unsuccessful
 
-
+    def __SearchContact(self):
+        if self.contacts.ContactsSearch():
+            print("--End-of-list--")
+        else:
+            print("--No-Valid-Contact--")
 
 
     def __parse(self, choice):
