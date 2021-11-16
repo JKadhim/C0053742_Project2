@@ -32,6 +32,17 @@ class Display:
         else:
             print("--Failed-To-Delete--")
 
+    def __EditContact(self):
+        print ("Enter the details of the user you want to edit")
+        name, address, phone, age = self.__GetInfo()
+        if self.contacts.ContactsEdit(name, address, phone, age):
+            print("--Contact-Edited--")
+        else:
+            print("--Failed-To-Edit--")
+
+
+
+
     def __parse(self, choice):
         if choice.lower() == "list":  # lists the contacts in the txt file
             self.contacts.ContactsList()
@@ -43,10 +54,10 @@ class Display:
             self.__RemoveContact()  # removes a contactfrom the txt file
             return True
         if choice.lower() == "edit":  # alters a contact in the txt file
-            self.contacts.ContactsEdit()
+            self.__EditContact()
             return True
         if choice.lower() == "search":  # searches for an existing contact
-            self.contacts.ContactsSearch()
+            self.__SearchContact()
             return True
         if choice.lower() == "close":
             self.contacts.ContactsClose()  # ends the program
@@ -68,4 +79,4 @@ class Display:
         while start:
             print(menu)  # prints out the UI
             choice = input()
-            start = self.__parse(choice)  # sends choice to __parse
+            begin = self.__parse(choice)  # sends choice to __parse
