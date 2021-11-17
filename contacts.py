@@ -14,11 +14,11 @@ class Contacts:
         lineGroup = int(lineCount / 4)  # splits the lines into each contact
         f.close()
         with open("Book.txt", "r") as file:
-            readline = file.read().split("\n")
+            readLine = file.read().split("\n")
             i = 0
             for x in range(0, lineGroup):  # formats the txt file into each contact and prints them
-                print('[{}, {}, {}, {}]'.format(readline[i], readline[i + 1],
-                                                readline[i + 2], readline[i + 3]))
+                print('[{}, {}, {}, {}]'.format(readLine[i], readLine[i + 1],
+                                                readLine[i + 2], readLine[i + 3]))
                 i = i + 4
 
     def ContactsRemove(self, name, address, phone, age):
@@ -30,22 +30,22 @@ class Contacts:
         lineGroup = int(lineCount / 4)  # splits the lines into each contact
         f.close()
         with open("Book.txt", "r") as file:
-            readline = file.read().split("\n")
+            readLine = file.read().split("\n")
             i = 0
             for x in range(0, lineGroup):  # searches the file for the specified file
-                if (readline[i].lower() == name.lower() and readline[i + 1].lower() == address.lower()
-                        and readline[i + 2].lower() == phone.lower() and readline[i + 3].lower() == age.lower()):
+                if (readLine[i].lower() == name.lower() and readLine[i + 1].lower() == address.lower()
+                        and readLine[i + 2].lower() == phone.lower() and readLine[i + 3].lower() == age.lower()):
                     print("Do you want to delete [{}, {}, {}, {}] Yes/No".format(name, address, phone, age))
                     ans = input()  # extra layer of checking
                     if ans.lower() == "yes":
                         fl = open("Book.txt", "w+")
                         a = i
 
-                        del readline[a]  # removes all attributes of the contact
-                        del readline[a]
-                        del readline[a]
-                        del readline[a]
-                        for line in readline:
+                        del readLine[a]  # removes all attributes of the contact
+                        del readLine[a]
+                        del readLine[a]
+                        del readLine[a]
+                        for line in readLine:
                             fl.write(line + "\n")
                         fl.close()
                         return True
@@ -66,11 +66,11 @@ class Contacts:
         lineGroup = int(lineCount / 4)  # splits the lines into each contact
         f.close()
         with open("Book.txt", "r") as file:
-            readline = file.read().split("\n")
+            readLine = file.read().split("\n")
             i = 0
             for x in range(0, lineGroup):  # searches the file for the specified file
-                if (readline[i].lower() == name.lower() and readline[i + 1].lower() == address.lower()
-                        and readline[i + 2].lower() == phone.lower() and readline[i + 3].lower() == age.lower()):
+                if (readLine[i].lower() == name.lower() and readLine[i + 1].lower() == address.lower()
+                        and readLine[i + 2].lower() == phone.lower() and readLine[i + 3].lower() == age.lower()):
                     print("Do you want to edit [{}, {}, {}, {}] Yes/No".format(name, address, phone, age))
                     ans = input()  # extra layer of checking
                     if ans.lower() == "yes":
@@ -87,15 +87,15 @@ class Contacts:
                         print("please give the date of birth of the contact:\n"
                               ">>")  # asks for the edited date of birth
                         age = input()
-                        linereader = open("Book.txt", "r")
-                        linelist = linereader.readlines()  # creates a list of the text file
-                        linelist[i] = (name + "\n")  # replaces the line with the new information x4
-                        linelist[i + 1] = (address + "\n")
-                        linelist[i + 2] = (phone + "\n")
-                        linelist[i + 3] = (age + "\n")
-                        linereader = open("Book.txt", "w")
-                        linereader.writelines(linelist)  # replaces the whole file with the new data
-                        linereader.close()
+                        lineReader = open("Book.txt", "r")
+                        lineList = lineReader.readlines()  # creates a list of the text file
+                        lineList[i] = (name + "\n")  # replaces the line with the new information x4
+                        lineList[i + 1] = (address + "\n")
+                        lineList[i + 2] = (phone + "\n")
+                        lineList[i + 3] = (age + "\n")
+                        lineReader = open("Book.txt", "w")
+                        lineReader.writelines(lineList)  # replaces the whole file with the new data
+                        lineReader.close()
                         return True
                     else:
                         return False  # cancels the action if the user chooses to
@@ -112,7 +112,7 @@ class Contacts:
         lineGroup = int(lineCount / 4)  # splits the lines into each contact
         f.close()
         with open("Book.txt", "r") as file:
-            linelist = file.read().split("\n")  # Creates an array of he text file without the \n
+            lineList = file.read().split("\n")  # Creates an array of he text file without the \n
             print("""What would you like to search for?:
             >Name
             >Address
@@ -125,8 +125,8 @@ class Contacts:
                 c = 0
                 print("--List-Of-Matches--")
                 for x in range(0, lineGroup):
-                    if search.lower() == linelist[i]:  # prints out if there is a match
-                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                    if search.lower() == lineList[i]:  # prints out if there is a match
+                        print("[{}, {}, {}, {}]".format(lineList[i], lineList[i + 1], lineList[i + 2], lineList[i + 3]))
                         c = c + 1  # changes if there are any matches
                     i = i + 4
                 if c == 0:  # if there are no matches
@@ -141,8 +141,8 @@ class Contacts:
                 c = 0
                 print("--List-Of-Matches--")
                 for x in range(0, lineGroup):
-                    if search.lower() == linelist[i + 1]:  # prints if there is a match
-                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                    if search.lower() == lineList[i + 1]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(lineList[i], lineList[i + 1], lineList[i + 2], lineList[i + 3]))
                         c = c + 1  # changes if there is a match
                     i = i + 4
                 if c == 0:  # prints if there isn't a match
@@ -157,8 +157,8 @@ class Contacts:
                 c = 0
                 print("--List-Of-Matches--")
                 for x in range(0, lineGroup):
-                    if search.lower() == linelist[i + 2]:  # prints if there is a match
-                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                    if search.lower() == lineList[i + 2]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(lineList[i], lineList[i + 1], lineList[i + 2], lineList[i + 3]))
                         c = c + 1  # changes if there is a match
                     i = i + 4
                 if c == 0:  # prints if there isn't a match
@@ -173,8 +173,8 @@ class Contacts:
                 c = 0
                 print("--List-Of-Matches--")
                 for x in range(0, lineGroup):
-                    if search.lower() == linelist[i + 3]:  # prints if there is a match
-                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                    if search.lower() == lineList[i + 3]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(lineList[i], lineList[i + 1], lineList[i + 2], lineList[i + 3]))
                         c = c + 1  # changes if there is a match
                     i = i + 4
                 if c == 0:  # prints if there isn't a match

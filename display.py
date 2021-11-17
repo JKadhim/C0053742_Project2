@@ -19,7 +19,7 @@ class Display:
         print("please give the date of birth of the contact:\n"
               ">>")
         age = input()
-        return (name, address, phone, age)  # gets all necessary info for the address book
+        return name, address, phone, age  # gets all necessary info for the address book
 
     def __AddContact(self):
         name, address, phone, age = self.__GetInfo()  # gets info from the user
