@@ -33,19 +33,18 @@ class Display:
             print("--Failed-To-Delete--")
 
     def __EditContact(self):
-        print ("Enter the details of the user you want to edit")
+        print("Enter the details of the user you want to edit")
         name, address, phone, age = self.__GetInfo()
         if self.contacts.ContactsEdit(name, address, phone, age):
-            print("--Contact-Edited--")# if the method is succesfull
+            print("--Contact-Edited--")  # if the method is successful
         else:
-            print("--Failed-To-Edit--")# if the method is unsuccessful
+            print("--Failed-To-Edit--")  # if the method is unsuccessful
 
     def __SearchContact(self):
-        if self.contacts.ContactsSearch(): #if there are valid contacts
+        if self.contacts.ContactsSearch():  # if there are valid contacts
             print("--End-of-list--")
-        else: #if exited or there isnt a valid contact
+        else:  # if exited or there isn't a valid contact
             print("--No-Valid-Contact--")
-
 
     def __parse(self, choice):
         if choice.lower() == "list":  # lists the contacts in the txt file
@@ -55,7 +54,7 @@ class Display:
             self.__AddContact()
             return True
         if choice.lower() == "remove":
-            self.__RemoveContact()  # removes a contactfrom the txt file
+            self.__RemoveContact()  # removes a contact from the txt file
             return True
         if choice.lower() == "edit":  # alters a contact in the txt file
             self.__EditContact()
@@ -63,8 +62,11 @@ class Display:
         if choice.lower() == "search":  # searches for an existing contact
             self.__SearchContact()
             return True
-        if choice.lower() == "close":
-            self.contacts.ContactsClose()  # ends the program
+        if choice.lower() == "close":  # Ends the program
+            print("--End-Of-Program--")
+            return False
+        else:  # returns to the menu
+            print("--Invalid-Choice--")
             return True
 
     def run(self):
