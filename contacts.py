@@ -111,16 +111,78 @@ class Contacts:
                 lineCount += 1
         lineGroup = int(lineCount / 4)  # splits the lines into each contact
         f.close()
-        print ("""What would you like to search for?:
-                  >Name
-                  >Address
-                  >Number
-                  >Birthday
-                  >>""")
-        searchChoice=input()
-        if searchChoice.lower() == "name":
-            search = input("What name are you searching for?")
-            i = 0
-            for x in range(0, lineGroup):
+        with open("Book.txt", "r") as file:
+            linelist = file.read().split("\n")  # Creates an array of he text file without the \n
+            print("""What would you like to search for?:
+            >Name
+            >Address
+            >Number
+            >DOB""")
+            searchChoice = input(">>")
+            if searchChoice.lower() == "name":  # searches using the name of the contact
+                search = input("What name are you searching for?")
+                i = 0
+                c = 0
+                print("--List-Of-Matches--")
+                for x in range(0, lineGroup):
+                    if search.lower() == linelist[i]:  # prints out if there is a match
+                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                        c = c + 1  # changes if there are any matches
+                    i = i + 4
+                if c == 0:  # if there are no matches
+                    print("--No-Matches--")
+                    return False
+                else:
+                    return True
 
+            elif searchChoice.lower() == "address":  # searches using address of contact
+                search = input("What address are you searching for?")
+                i = 0
+                c = 0
+                print("--List-Of-Matches--")
+                for x in range(0, lineGroup):
+                    if search.lower() == linelist[i + 1]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                        c = c + 1  # changes if there is a match
+                    i = i + 4
+                if c == 0:  # prints if there isn't a match
+                    print("--No-Matches--")
+                    return False
+                else:
+                    return True
 
+            elif searchChoice.lower() == "number":  # searches using the number of the contact
+                search = input("What phone number are you searching for?")
+                i = 0
+                c = 0
+                print("--List-Of-Matches--")
+                for x in range(0, lineGroup):
+                    if search.lower() == linelist[i + 2]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                        c = c + 1  # changes if there is a match
+                    i = i + 4
+                if c == 0:  # prints if there isn't a match
+                    print("--No-Matches--")
+                    return False
+                else:
+                    return True
+
+            elif searchChoice.lower() == "birthday":  # searches using the birthday of the contact
+                search = input("What Birthday are you searching for?")
+                i = 0
+                c = 0
+                print("--List-Of-Matches--")
+                for x in range(0, lineGroup):
+                    if search.lower() == linelist[i + 3]:  # prints if there is a match
+                        print("[{}, {}, {}, {}]".format(linelist[i], linelist[i + 1], linelist[i + 2], linelist[i + 3]))
+                        c = c + 1  # changes if there is a match
+                    i = i + 4
+                if c == 0:  # prints if there isn't a match
+                    print("--No-Matches--")
+                    return False
+                else:
+                    return True
+
+            else:  # runs if the input is invalid
+                print("--Invalid-Input--")
+                return False

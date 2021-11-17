@@ -41,9 +41,9 @@ class Display:
             print("--Failed-To-Edit--")# if the method is unsuccessful
 
     def __SearchContact(self):
-        if self.contacts.ContactsSearch():
+        if self.contacts.ContactsSearch(): #if there are valid contacts
             print("--End-of-list--")
-        else:
+        else: #if exited or there isnt a valid contact
             print("--No-Valid-Contact--")
 
 
